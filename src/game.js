@@ -42,34 +42,40 @@ setInterval(() => {
     moveForward()
 }, moveInterval)
 
+const downMove = { row: 1, column: 0 }
+const leftMove = { row: 0, column: -1 }
+const rightMove = { row: 0, column: 1 }
+
 function moveForward() {
-    if (canMoveCurrentPieceDown()) {
-        moveCurrentPieceDown()
+    if (canMoveCurrentPiece(downMove)) {
+        moveCurrentPiece(downMove)
     } else {
         addCurrentPieceToOccupiedTiles()
         spawnNewPiece()
     }
 }
 
-function positionOneDown(position) {
+function addMoveToPosition(position, move) {
     return {
-        row: position.row + 1,
-        column: position.column
+        row: position.row + move.row,
+        column: position.column + move.column
     }
 }
 
-function canMoveCurrentPieceDown() {    
-    const nextPosition = positionOneDown(currentPosition)
+function canMoveCurrentPiece(move) {    
+    const nextPosition = addMoveToPosition(currentPosition, move)
     const tilesForNextPosition = tilesOfPiece(currentPiece, nextPosition)
 
-    const hasReachedBottom = tilesForNextPosition.some(tile => tile.row >= nTilesVertical)
+    const willGoUnderGrid = tilesForNextPosition.some(tile => tile.row >= nTilesVertical)
+    const willGoLeftOfGrid = tilesForNextPosition.some(tile => tile.column < 0)
+    const willGoRightOfGrid = tilesForNextPosition.some(tile => tile.column >= nTilesHorizontal)
     const willOverlapOtherPiece = tilesForNextPosition.some(tile => 
         occupiedTiles.some(occupiedTile => 
             tile.row === occupiedTile.row && tile.column === occupiedTile.column
         )
     )
 
-    return !hasReachedBottom && !willOverlapOtherPiece
+    return !willGoUnderGrid && !willGoLeftOfGrid && !willGoRightOfGrid && !willOverlapOtherPiece
 }
 
 function tilesOfPiece(piece, position) {
@@ -93,11 +99,12 @@ function addCurrentPieceToOccupiedTiles() {
     occupiedTiles.push(...tiles)
 }
 
-function moveCurrentPieceDown() {
-    clearPiece(currentPiece, currentPosition)
+function moveCurrentPiece(move) {
+    const originalPosition = currentPosition
+    
+    currentPosition = addMoveToPosition(currentPosition, move)
 
-    currentPosition = positionOneDown(currentPosition)
-
+    clearPiece(currentPiece, originalPosition)
     drawPiece(currentPiece, currentPosition)
 }
 
@@ -131,3 +138,26 @@ function spawnNewPiece() {
     currentPosition = {row: -3, column: 0}
     drawPiece(currentPiece, currentPosition)
 }
+
+window.addEventListener("keydown", function name(event )  {
+    if (event.key === "ArrowRight" && canMoveCurrentPiece(rightMove))  {
+        moveCurrentPiece(rightMove)
+    }
+
+    if (event.key === "ArrowLeft"&& canMoveCurrentPiece(leftMove))  {
+        moveCurrentPiece(leftMove)
+    }
+
+    if (event.key === "ArrowUp") {
+        // TODO
+    }
+
+    if (event.key === "ArrowDown") {
+        if (canMoveCurrentPiece(downMove)) {
+            moveCurrentPiece(downMove)
+        } else {
+            addCurrentPieceToOccupiedTiles()
+            spawnNewPiece()
+        }
+    }
+})
