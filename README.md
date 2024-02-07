@@ -44,11 +44,16 @@ We should also have ~0.5h break in the chillout every day - we can play pool, bo
 |           | 16:00  | Home time |
 
 ## Set up
+### Install required software
+- [VS Code](https://code.visualstudio.com/)
+- [Node.js](https://nodejs.org/en)
+- [Git](https://git-scm.com/downloads)
+
+### Create a GitHub account
+Go to [GitHub](https://github.com/) and create an account with your email address.
+
 ### Join our Trello board
 To help us track our tasks and their statuses, I've set up a [Trello board](https://trello.com/b/fnf2Cgz8/softwire-work-experience-feb-2024). I will send you an invite link on the first day and you should be able to see the board.
-
-### Download VS Code
-VS Code is a text editor and we will use it to edit our code. Download VSCode from [here](https://code.visualstudio.com/).
 
 ### Clone the code
 We all need to create a local copy of the code before you can make changes to it on your computer. You can do this with the following command
