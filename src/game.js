@@ -20,7 +20,23 @@ gameBoardContext.canvas.width = boardWidth
 const occupiedTiles = []
 
 currentPiece = iPiece
-currentPosition = {row: 0, column: 0}
+currentPosition = { row: 0, column: 0 }
+
+setUpGrid()
+
+function setUpGrid() {
+    for (let x = 0; x <= boardWidth; x += tileWidth) {
+        gameBoardContext.moveTo(x, 0)
+        gameBoardContext.lineTo(x, boardHeight)
+        gameBoardContext.stroke()
+    }
+
+    for (let y = 0; y <= boardHeight; y += tileHeight) {
+        gameBoardContext.moveTo(0, y)
+        gameBoardContext.lineTo(boardWidth, y)
+        gameBoardContext.stroke()
+    }
+}
 
 setInterval(() => {
     moveForward()
@@ -107,7 +123,7 @@ function drawPiece(piece, position) {
 
 function drawTile(row, column, color) {
     gameBoardContext.fillStyle = color
-    gameBoardContext.fillRect(column * tileWidth, row * tileHeight, tileWidth, tileHeight)
+    gameBoardContext.fillRect(column * tileWidth + 1, row * tileHeight + 1, tileWidth - 2, tileHeight - 2)
 }
 
 function spawnNewPiece() {
