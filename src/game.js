@@ -1,4 +1,5 @@
-import { iPiece } from "./pieces.js"
+import { iPiece, jPiece, rotatePieceArrayClockwise } from "./pieces.js"
+import { getRandomElement } from "./randomElement.js"
 
 const gameBoard = document.getElementById('game-board')
 const gameBoardContext = gameBoard.getContext('2d')
@@ -12,15 +13,14 @@ const boardWidth = tileWidth * nTilesHorizontal
 
 const moveInterval = 300
 
-let currentPiece, currentPosition;
+let currentPiece = iPiece
+let currentPosition = { row: 0, column: 0 }
+let currentClockwiseRotations = 0;
 
 gameBoardContext.canvas.height = boardHeight
 gameBoardContext.canvas.width = boardWidth
 
 const occupiedTiles = []
-
-currentPiece = iPiece
-currentPosition = { row: 0, column: 0 }
 
 setUpGrid()
 
@@ -64,12 +64,16 @@ function addMoveToPosition(position, move) {
 
 function canMoveCurrentPiece(move) {    
     const nextPosition = addMoveToPosition(currentPosition, move)
-    const tilesForNextPosition = tilesOfPiece(currentPiece, nextPosition)
+    const tilesForNextPosition = tilesOfPiece(currentPiece, nextPosition, currentClockwiseRotations)
 
-    const willGoUnderGrid = tilesForNextPosition.some(tile => tile.row >= nTilesVertical)
-    const willGoLeftOfGrid = tilesForNextPosition.some(tile => tile.column < 0)
-    const willGoRightOfGrid = tilesForNextPosition.some(tile => tile.column >= nTilesHorizontal)
-    const willOverlapOtherPiece = tilesForNextPosition.some(tile => 
+    return areValidTiles(tilesForNextPosition)
+}
+
+function areValidTiles(tiles) {
+    const willGoUnderGrid = tiles.some(tile => tile.row >= nTilesVertical)
+    const willGoLeftOfGrid = tiles.some(tile => tile.column < 0)
+    const willGoRightOfGrid = tiles.some(tile => tile.column >= nTilesHorizontal)
+    const willOverlapOtherPiece = tiles.some(tile => 
         occupiedTiles.some(occupiedTile => 
             tile.row === occupiedTile.row && tile.column === occupiedTile.column
         )
@@ -78,9 +82,11 @@ function canMoveCurrentPiece(move) {
     return !willGoUnderGrid && !willGoLeftOfGrid && !willGoRightOfGrid && !willOverlapOtherPiece
 }
 
-function tilesOfPiece(piece, position) {
+function tilesOfPiece(piece, position, clockwiseRotations) {
     const tiles = []
-    piece.array.forEach((row, rowIndex) => 
+    const rotatedArray = rotatePieceArrayClockwise(piece.array, clockwiseRotations)
+
+    rotatedArray.forEach((row, rowIndex) => 
         row.forEach((value, columnIndex) => {
             if (value === 1) {
                 tiles.push({
@@ -95,7 +101,7 @@ function tilesOfPiece(piece, position) {
 }
 
 function addCurrentPieceToOccupiedTiles() {
-    const tiles = tilesOfPiece(currentPiece, currentPosition)
+    const tiles = tilesOfPiece(currentPiece, currentPosition, currentClockwiseRotations)
     occupiedTiles.push(...tiles)
 }
 
@@ -104,25 +110,37 @@ function moveCurrentPiece(move) {
     
     currentPosition = addMoveToPosition(currentPosition, move)
 
-    clearPiece(currentPiece, originalPosition)
-    drawPiece(currentPiece, currentPosition)
+    clearPiece(currentPiece, originalPosition, currentClockwiseRotations)
+    drawPiece(currentPiece, currentPosition, currentClockwiseRotations)
 }
 
-function clearPiece(piece, position) {
-    piece.array.forEach((row, rowIndex) => {
-        row.forEach((value, columnIndex) => {
-            if (value === 1) {
-                drawTile(position.row + rowIndex, position.column + columnIndex, 'white')
-            }
-        })
-    })
+function canRotateCurrentPiece() {
+    const tiles = tilesOfPiece(currentPiece, currentPosition, currentClockwiseRotations + 1)
+    return areValidTiles(tiles)
 }
 
-function drawPiece(piece, position) {
-    piece.array.forEach((row, rowIndex) => {
+function rotateCurrentPiece() {
+    clearPiece(currentPiece, currentPosition, currentClockwiseRotations)
+
+    currentClockwiseRotations += 1
+
+    drawPiece(currentPiece, currentPosition, currentClockwiseRotations)
+}
+
+function clearPiece(piece, position, clockwiseRotations) {
+    updateTilesForPiece(piece.array, position, clockwiseRotations, 'white')
+}
+
+function drawPiece(piece, position, clockwiseRotations) {
+    updateTilesForPiece(piece.array, position, clockwiseRotations, piece.color)
+}
+
+function updateTilesForPiece(pieceArray, position, clockwiseRotations, color) {
+    const rotatedArray = rotatePieceArrayClockwise(pieceArray, clockwiseRotations)
+    rotatedArray.forEach((row, rowIndex) => {
         row.forEach((value, columnIndex) => {
             if (value === 1) {
-                drawTile(position.row + rowIndex, position.column + columnIndex, piece.color)
+                drawTile(position.row + rowIndex, position.column + columnIndex, color)
             }
         })
     })
@@ -134,9 +152,14 @@ function drawTile(row, column, color) {
 }
 
 function spawnNewPiece() {
-    currentPiece = iPiece
+    currentPiece = getRandomPiece()
     currentPosition = {row: -3, column: 0}
-    drawPiece(currentPiece, currentPosition)
+    currentClockwiseRotations = 0
+    drawPiece(currentPiece, currentPosition, currentClockwiseRotations)
+}
+
+function getRandomPiece() {
+    return getRandomElement([iPiece, jPiece])
 }
 
 window.addEventListener("keydown", function name(event )  {
@@ -149,7 +172,9 @@ window.addEventListener("keydown", function name(event )  {
     }
 
     if (event.key === "ArrowUp") {
-        // TODO
+        if (canRotateCurrentPiece()) {
+            rotateCurrentPiece()
+        }
     }
 
     if (event.key === "ArrowDown") {
