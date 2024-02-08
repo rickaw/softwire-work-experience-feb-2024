@@ -71,6 +71,17 @@ npm install
 
 You'll need to run this command again whenever a new dependency is added, but not every time when you run the website locally.
 
+### Add Git Graph VS Code extension (optional but recommended)
+This extension helps us visualise the git history.
+
+- Open VS Code
+- Click the extension tab on the left panel
+- Search for Git Graph
+- Click "Install"
+
+Now when you open the Source Control tab on the left, you have th e
+Adding a git graph may help you visualise the git history.
+
 ## Running locally
 To test your changes whilst you are developing, you will need to be able to run the website locally. 
 This means that the code is running on your own computer and you can access it in a browser without having to deploy the app publicly over the internet.
@@ -174,6 +185,7 @@ Once you are happy with your code, you can open GitHub in a browser and do the f
 - [CSS basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
 - [CSS flexbox guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [JavaScript basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics)
+- [Git cheatsheet](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ### Further reading for backend development
 - [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
