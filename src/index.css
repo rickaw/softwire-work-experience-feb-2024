@@ -21,7 +21,7 @@
         0 20px 30px rgba(0, 0, 0, 0.5);
 }
 
-#sub-heading {
+.sub-heading {
     margin: 25px auto;
     text-align: left;
     color:palevioletred;
@@ -37,5 +37,4 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-    
 
