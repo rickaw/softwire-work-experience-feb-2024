@@ -42,7 +42,10 @@ p {
     justify-content: space-around;
 }
 
+.dinosaur-paragraph-container {
+    width: 20%;
+}
+
 .dinasour {
-     max-width: 20%;
-     height: auto;   
+     height: 150px;   
 }
