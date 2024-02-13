@@ -185,7 +185,7 @@ Once you are happy with your code, you can open GitHub in a browser and do the f
 ### Project Resources
 - [Trello board](https://trello.com/b/fnf2Cgz8/softwire-work-experience-feb-2024) - to keep track of tasks and their statuses
 - [Github repository](https://github.com/rickaw/softwire-work-experience-feb-2024) - central location for all of our code
-- [Live site](https://softwire-work-experience-feb-2024-git-main-softwire-we-feb-2024.vercel.app/)
+- [Live site](https://softwire-work-experience-feb-2024.vercel.app/)
 
 ### Useful HTML/CSS/JavaScript Guides
 
