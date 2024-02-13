@@ -2,3 +2,10 @@
     color: red;
     text-align: center;
 }
+
+#game-header {
+    color:pink;
+    text-align: center;
+    font-size: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
