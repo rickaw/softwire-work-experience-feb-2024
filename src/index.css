@@ -37,4 +37,12 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.image-container {
+    display:flex;
+    justify-content: space-around;
+}
 
+.dinasour {
+     max-width: 20%;
+     height: auto;   
+}
