@@ -16,10 +16,10 @@ for(let i = 40; i<800; i+=40) {
     console.log(i)
 }
 
-function fillBox(row, column) {
+function fillBox(row, column,colour) {
     const canvas = document.getElementById("canvas");
     const box = canvas.getContext("2d");
-    box.fillStyle = "red";
+    box.fillStyle = colour;
     box.fillRect(column * 40 + 1, row * 40 + 1, 38, 38);
 }
 
@@ -53,16 +53,42 @@ for(let i = 40; i<160; i+=40) {
     console.log(i)
 }
 
-function drawBlock(typeBlock,position){
+function drawBlock(typeBlock,position,colour){
   typeBlock.forEach(function (row,rowIndex){
     row.forEach(function(item,index){
       if (item==1){
-        fillBox(rowIndex+position[0],index+position[1])
+        fillBox(rowIndex+position[0],index+position[1],colour)
       }
     })
   })
 
 }
 
-drawBlock(jBlock,[5,-1])
-drawBlock(iBlock,[8,2])
+drawBlock(jBlock,[5,-1] ,'red')
+drawBlock(jBlock,[5,-1],'white')
+
+// const blockPositions=[
+//   {
+//     shape: iblock, 
+//     position: [3,3]
+
+//   }
+// ]
+
+//like a dictionary (creating objects)
+const currentBlock=
+  {
+    shape: jBlock, 
+    position: [3,3],
+    colour:'red',
+
+  }
+
+drawBlock(currentBlock.shape,currentBlock.position,currentBlock.colour)
+
+setInterval(() => {
+  drawBlock(currentBlock.shape,currentBlock.position,'white')
+  currentBlock.position=[currentBlock.position[0]+1,currentBlock.position[1]]
+  drawBlock(currentBlock.shape,currentBlock.position,currentBlock.colour)
+}, 1000);
+
