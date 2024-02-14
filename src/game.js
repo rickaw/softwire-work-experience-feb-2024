@@ -36,7 +36,7 @@ var c = document.getElementById("canvas2");
 var line = c.getContext("2d");
 line.strokeStyle='rgba(0,0,0,0.1)' 
 
-//for loops for drawing the grid 
+//for loops for drawing the smaller grid 
 for(let i= 40; i<200; i+=40) {
     line.moveTo(i,0);
     line.lineTo(i,800);
