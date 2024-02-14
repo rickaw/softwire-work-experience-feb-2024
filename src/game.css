@@ -4,6 +4,7 @@
     opacity: 0.3; 
     height: 600px; 
     margin: 0 auto; 
+    background-color: white;
 }
 
 #game-header {
@@ -35,7 +36,7 @@
 p {
     margin: 12.5px auto;
     text-align: left;
-    color:black;
+    color:white;
     font-size: 1.5em;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -52,3 +53,8 @@ p {
 .dinasour {
      height: 150px;   
 }
+
+body {
+    background-color: black;
+}
+.game-board
