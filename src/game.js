@@ -45,21 +45,34 @@ const jBlock = [
   //arrow function
 
 
-jBlock.forEach(function(row,rowIndex){
-  console.log(row,rowIndex)
-  row.forEach(function(item,index){
-    if (item==1){
-    fillBox(rowIndex,index)
-  }
-})
-})
+// jBlock.forEach(function (row,rowIndex){
+//   console.log(row,rowIndex)
+//   row.forEach(function(item,index){
+//     if (item==1){
+//     fillBox(rowIndex,index)
+//   }
+// })
+// })
 
-iBlock.forEach(function (row,rowIndex){
-  //console.log(row,rowIndex)
-  row.forEach(function(item,index){
-    if (item==1){
-      fillBox(rowIndex,index)
-    }
+
+// iBlock.forEach(function (row,rowIndex){
+//   //console.log(row,rowIndex)
+//   row.forEach(function(item,index){
+//     if (item==1){
+//       fillBox(rowIndex,index)
+//     }
+//   })
+// })
+
+function drawBlock(typeBlock,position){
+  typeBlock.forEach(function (row,rowIndex){
+    row.forEach(function(item,index){
+      if (item==1){
+        fillBox(rowIndex,index)
+      }
+    })
   })
-})
 
+}
+
+drawBlock(jBlock,[3,6])
