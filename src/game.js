@@ -37,6 +37,25 @@ const jBlock = [
     [0, 0, 1, 0],
   ]
 
+
+
+window.addEventListener("keydown", handleKeyboardEvent)
+
+function handleKeyboardEvent(event) {
+  if (event.key === "ArrowUp") {
+    console.log("Up arrow pressed")
+  }
+  else if(event.key === "ArrowDown"){
+    console.log("Down arrow pressed")
+  }
+  else if(event.key ==="ArrowLeft"){
+    console.log("Left arrow pressed")
+  }
+  else if(event.key=== "ArrowRight"){
+    console.log("Right arrow pressed")
+  }
+
+}
 line.strokeStyle='rgba(0,0,0,3)' 
 
 //for loops for drawing the smaller grid 
