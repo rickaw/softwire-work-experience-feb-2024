@@ -16,18 +16,15 @@ for(let i = 40; i<800; i+=40) {
     console.log(i)
 }
 
-
-
-function fillBoxes(x, y) {
+function fillBox(row, column) {
     const canvas = document.getElementById("canvas");
     const box = canvas.getContext("2d");
     box.fillStyle = "red";
-    box.fillRect(y, x, 40, 40);
+    box.fillRect(column * 40, row * 40, 40, 40);
 }
 
 //calling the function above to fill boxes 
-fillBoxes(40,80)
-fillBoxes(120,160)
-fillBoxes(320,40)
-fillBoxes(400,400)
+fillBox(1, 2)
+fillBox(3, 4)
+fillBox(8, 1)
 
