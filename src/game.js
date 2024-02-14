@@ -28,3 +28,24 @@ fillBox(1, 2)
 fillBox(3, 4)
 fillBox(8, 1)
 
+
+
+
+
+var c = document.getElementById("canvas2");
+var line = c.getContext("2d");
+line.strokeStyle='rgba(0,0,0,0.1)' 
+
+//for loops for drawing the grid 
+for(let i= 40; i<200; i+=40) {
+    line.moveTo(i,0);
+    line.lineTo(i,800);
+    line.stroke();
+    console.log(i)
+}
+for(let i = 40; i<400; i+=40) {
+    line.moveTo(0,i);
+    line.lineTo(200,i);
+    line.stroke();
+    console.log(i)
+}
