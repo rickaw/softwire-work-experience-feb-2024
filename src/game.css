@@ -1,11 +1,23 @@
-.game-board {
-    display: block;
-    border: 1px solid #000000; 
-    opacity: 0.3; 
-    height: 600px; 
-    margin: 0 auto; 
+.game-grids {
+    display:flex;
+    justify-content:center
 }
 
+.game-board {
+    height: 600px; 
+}
+.block-display {
+    height: 150px; 
+    position: relative;
+    
+   
+}
+.grid {
+    display: block;
+    border: 4px solid #000000; 
+    opacity: 0.3; 
+    margin: 25px ; 
+}
 #game-header {
     margin: 50px auto;
     text-align: center;
