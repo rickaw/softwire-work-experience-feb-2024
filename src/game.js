@@ -24,7 +24,42 @@ function fillBox(row, column) {
 }
 
 //calling the function above to fill boxes 
-fillBox(1, 2)
-fillBox(3, 4)
-fillBox(8, 1)
+//fillBox(1, 2)
+//fillBox(3, 4)
+// fillBox(8, 1)
+
+const jBlock = [
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0]
+  ]
+  
+  const iBlock = [
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+  ]
+
+  //arrow function
+
+
+jBlock.forEach(function(row,rowIndex){
+  console.log(row,rowIndex)
+  row.forEach(function(item,index){
+    if (item==1){
+    fillBox(rowIndex,index)
+  }
+})
+})
+
+iBlock.forEach(function (row,rowIndex){
+  //console.log(row,rowIndex)
+  row.forEach(function(item,index){
+    if (item==1){
+      fillBox(rowIndex,index)
+    }
+  })
+})
 
