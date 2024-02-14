@@ -23,11 +23,6 @@ function fillBox(row, column) {
     box.fillRect(column * 40 + 1, row * 40 + 1, 38, 38);
 }
 
-//calling the function above to fill boxes 
-//fillBox(1, 2)
-//fillBox(3, 4)
-// fillBox(8, 1)
-
 const jBlock = [
     [0, 0, 1, 0],
     [0, 0, 1, 0],
@@ -41,8 +36,6 @@ const jBlock = [
     [0, 0, 1, 0],
     [0, 0, 1, 0],
   ]
-
-  //arrow function
 
 
 // jBlock.forEach(function (row,rowIndex){
