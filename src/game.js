@@ -32,8 +32,7 @@ fillBox(8, 1)
 
 
 
-var c = document.getElementById("canvas2");
-var line = c.getContext("2d");
+
 line.strokeStyle='rgba(0,0,0,3)' 
 
 //for loops for drawing the smaller grid 
