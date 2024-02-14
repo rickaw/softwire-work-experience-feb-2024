@@ -20,11 +20,33 @@ function fillBox(row, column) {
     const canvas = document.getElementById("canvas");
     const box = canvas.getContext("2d");
     box.fillStyle = "red";
-    box.fillRect(column * 40, row * 40, 40, 40);
+    box.fillRect(column * 40 + 1, row * 40 + 1, 38, 38);
 }
 
-//calling the function above to fill boxes 
-fillBox(1, 2)
-fillBox(3, 4)
-fillBox(8, 1)
+const jBlock = [
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0]
+  ]
+  
+  const iBlock = [
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+    [0, 0, 1, 0],
+  ]
 
+function drawBlock(typeBlock,position){
+  typeBlock.forEach(function (row,rowIndex){
+    row.forEach(function(item,index){
+      if (item==1){
+        fillBox(rowIndex+position[0],index+position[1])
+      }
+    })
+  })
+
+}
+
+drawBlock(jBlock,[5,-1])
+drawBlock(iBlock,[8,2])
