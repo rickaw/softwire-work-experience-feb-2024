@@ -1,6 +1,9 @@
-.center {
+.game-board {
+    display: block;
+    border: 1px solid #000000; 
+    opacity: 0.3; 
+    height: 600px; 
     margin: 0 auto; 
-    border: 3px solid pink;
 }
 
 #game-header {
