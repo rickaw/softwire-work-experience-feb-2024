@@ -37,26 +37,6 @@ const jBlock = [
     [0, 0, 1, 0],
   ]
 
-
-// jBlock.forEach(function (row,rowIndex){
-//   console.log(row,rowIndex)
-//   row.forEach(function(item,index){
-//     if (item==1){
-//     fillBox(rowIndex,index)
-//   }
-// })
-// })
-
-
-// iBlock.forEach(function (row,rowIndex){
-//   //console.log(row,rowIndex)
-//   row.forEach(function(item,index){
-//     if (item==1){
-//       fillBox(rowIndex,index)
-//     }
-//   })
-// })
-
 function drawBlock(typeBlock,position){
   typeBlock.forEach(function (row,rowIndex){
     row.forEach(function(item,index){
