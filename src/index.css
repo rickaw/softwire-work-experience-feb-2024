@@ -1,8 +1,29 @@
 #welcome-header {
-    color: red;
+    color: pink;
     text-align: center;
+    margin: 200px auto;
+    font-size: 10em;
 }
 
-#button{
+
+a:link, a:visited {
+    background-color: white;
+    color: black;
+    padding: 20px 30px;
+    text-align: center;
     text-decoration: none;
-}
+    display: inline-block;
+    font-size: 5em;
+  }
+
+  #sub-heading {
+    color:palevioletred;
+    text-align: center;
+    font-size:5em;
+    margin: 30px;
+  }
+  button {
+    display: block;
+    margin: 250px auto;
+  }
+  
