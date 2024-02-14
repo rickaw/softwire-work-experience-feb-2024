@@ -45,16 +45,27 @@ p {
     display:flex;
     justify-content: space-around;
 }
-
 .dinosaur-paragraph-container {
     width: 20%;
-}
 
+}
 .dinasour {
      height: 150px;   
 }
-
 body {
     background-color: black;
 }
-.game-board
+.rotate {
+    animation: rotation 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
