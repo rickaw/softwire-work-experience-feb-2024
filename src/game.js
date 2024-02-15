@@ -20,12 +20,7 @@ const currentBlock = {
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
 setInterval(() => {
-  const nextBlockPosition = positionOneDown(currentBlock.position)
-  const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
-  const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
-  if (tilePositionsAreValid) {
-    moveCurrentBlockDown()
-  }
+  moveCurrentBlockIfValid(downMove)
 }, 500);
 
 function drawGameBoardGrid() {
@@ -74,7 +69,7 @@ function drawBlock(blockType, position, colour){
 
 const downMove = [1, 0]
 const leftMove=[0,-1]
-// move is [..., ...]
+
 const rightMove=[0,1]
 function moveCurrentBlock(move) {
     const rowChange = move[0]
@@ -90,16 +85,6 @@ function moveCurrentBlockDown() {
   currentBlock.position = [currentBlock.position[0]+1, currentBlock.position[1]]
   drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 }
-function moveCurrentBlockLeft() {
-    drawBlock(currentBlock.shape, currentBlock.position, 'white')
-    currentBlock.position = [currentBlock.position[0], currentBlock.position[1]-1]
-    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
-  }
-function moveCurrentBlockRight() {
-    drawBlock(currentBlock.shape, currentBlock.position, 'white')
-    currentBlock.position = [currentBlock.position[0], currentBlock.position[1]+1]
-    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
-  }
 
 function handleKeyboardEvent(event) {
   if (event.key === "ArrowUp") {
@@ -110,21 +95,33 @@ function handleKeyboardEvent(event) {
     event.preventDefault()
     console.log("Down arrow pressed")
     // moveCurrentBlockDown()
-    moveCurrentBlock(downMove)
+
+    moveCurrentBlockIfValid(downMove)
+
   } else if(event.key === "ArrowLeft"){
     event.preventDefault()
-    // moveCurrentBlockLeft()
-    moveCurrentBlock(leftMove)
+
+    moveCurrentBlockIfValid(leftMove)
+
     console.log("Left arrow pressed")
 
     
   } else if(event.key === "ArrowRight"){
     event.preventDefault()
     console.log("Right arrow pressed")
-    moveCurrentBlock(rightMove)
+
+    moveCurrentBlockIfValid(rightMove)
 
 }}
 
+function moveCurrentBlockIfValid(move) {
+  const nextBlockPosition = getPosition(currentBlock.position, move)
+    const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
+    const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
+    if (tilePositionsAreValid) {
+      moveCurrentBlock(move)
+    }
+}
 
 function isValidTilePosition(tilePosition) {
   const row = tilePosition[0]
@@ -138,11 +135,12 @@ function isValidTilePosition(tilePosition) {
   return true 
 }
 
-
-function positionOneDown(position) {
-  return [position[0]+1 , position[1]]
+function getPosition(originalPosition, move) {
+  return [
+    originalPosition[0] + move[0],
+    originalPosition[1] + move[1],
+  ]
 }
-
 
 function getTilePositions(blockType, position){
   const tilePos=[]
