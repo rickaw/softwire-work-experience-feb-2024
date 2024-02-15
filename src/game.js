@@ -3,6 +3,9 @@ import { blockShapes } from "./blocks.js";
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const nextCanvas = document.getElementById("canvas2");
+const nextCtx = nextCanvas.getContext("2d");
+
 drawGameBoardGrid()
 drawGridForNextBlock()
 
@@ -35,18 +38,18 @@ function drawGameBoardGrid() {
 }
 
 function drawGridForNextBlock() {
-  ctx.strokeStyle='rgba(0,0,0,0.3)'
+  nextCtx.strokeStyle='rgba(0,0,0,0.3)'
 
   for(let i= 40; i<160; i+=40) {
-    ctx.moveTo(i,0);
-    ctx.lineTo(i,160);
-    ctx.stroke();
+    nextCtx.moveTo(i,0);
+    nextCtx.lineTo(i,160);
+    nextCtx.stroke();
   }
 
   for(let i = 40; i<160; i+=40) {
-    ctx.moveTo(0,i);
-    ctx.lineTo(160,i);
-    ctx.stroke();
+    nextCtx.moveTo(0,i);
+    nextCtx.lineTo(160,i);
+    nextCtx.stroke();
   }
 }
 
