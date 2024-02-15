@@ -10,12 +10,22 @@
 <body>
     <h1 id="game-header">Pink Dino's Take Over</h1>
   
-
-    <div class="game-grids">
-        <img src="/assets/dinasour2.jpg" class="rotate" width="150" height="150"/>
-        <canvas class="game-board grid" id="canvas" width="400" height="800"></canvas>
-        <canvas class="block-display grid" id="canvas2" width="160" height="160"></canvas>
+<div class="big-container">
+    <div class="left-imgs">
+        <img src="/assets/dino3.PNG" class="rotate" width="200" height="200"/>
+        <img src="/assets/dino2.jpg" class="rotate" width="200" height="200"/>
+        <img src="/assets/dino1.jpg" class="rotate" width="200" height="200"/>  
     </div>
+    <div class="game-grids">
+        <canvas class="game-board grid" id="canvas" width="400" height="800"></canvas>
+        <canvas class="block-display grid" id="canvas2" width="160" height="160"></canvas>   
+    </div>
+    <div class="right-imgs">
+        <img src="/assets/dino3.PNG" class="rotate" width="200" height="200"/>
+        <img src="/assets/dino2.jpg" class="rotate" width="200" height="200"/>
+        <img src="/assets/dino1.jpg" class="rotate" width="200" height="200"/> 
+    </div>
+</div>
 
 
     <h2 class="sub-heading">
@@ -56,6 +66,10 @@
 
     
     <a href="/index.html">Exit</a>
+
+    <audio autoplay loop id="tetris-song">
+        <source src="assets/100444.mp3" type="audio/mpeg">
+    </audio>
 </body>
 
 </html>
