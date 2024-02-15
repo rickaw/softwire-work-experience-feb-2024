@@ -17,8 +17,8 @@ const currentBlock = {
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
 setInterval(() => {
-  moveCurrentBlockDown()
-}, 1000);
+    moveCurrentBlockDown()
+  }, 1000);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
@@ -64,26 +64,40 @@ function drawBlock(blockType, position, colour){
     })
   })
 }
-
+function ArrowKeysMovement(){
 function moveCurrentBlockDown() {
   drawBlock(currentBlock.shape, currentBlock.position, 'white')
   currentBlock.position = [currentBlock.position[0]+1, currentBlock.position[1]]
   drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 }
-
+function moveCurrentBlockLeft() {
+    drawBlock(currentBlock.shape, currentBlock.position, 'white')
+    currentBlock.position = [currentBlock.position[0], currentBlock.position[1]-1]
+    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
+  }
+function moveCurrentBlockRight() {
+    drawBlock(currentBlock.shape, currentBlock.position, 'white')
+    currentBlock.position = [currentBlock.position[0], currentBlock.position[1]+1]
+    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
+  }
+}
 function handleKeyboardEvent(event) {
   if (event.key === "ArrowUp") {
     event.preventDefault()
     console.log("Up arrow pressed")
+    ArrowKeysMovement()
   } else if(event.key === "ArrowDown"){
     event.preventDefault()
     console.log("Down arrow pressed")
+    moveCurrentBlockDown()
   } else if(event.key === "ArrowLeft"){
     event.preventDefault()
+    moveCurrentBlockLeft()
     console.log("Left arrow pressed")
   } else if(event.key === "ArrowRight"){
     event.preventDefault()
     console.log("Right arrow pressed")
+    moveCurrentBlockRight()
   }
 }
 
