@@ -113,14 +113,6 @@ function positionOneDown(position) {
 console.log(positionOneDown([3,5]))
 
 
-function rotateBlockShapeClockwise(blockShape) {
-  return blockShape[0].map((_, columnIndex) => 
-      blockShape.map(row => row[columnIndex]).reverse()
-  )
-}
-
-
-
 function getTilePositions(blockType, position){
   const tilePos=[]
   blockType.forEach(function (row,rowIndex){
