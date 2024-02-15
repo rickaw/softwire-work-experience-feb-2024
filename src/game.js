@@ -1,4 +1,4 @@
-import { jBlock } from "./blocks.js";
+import { blockShapes } from "./blocks.js";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -9,7 +9,7 @@ drawGridForNextBlock()
 window.addEventListener("keydown", handleKeyboardEvent)
 
 const currentBlock = {
-  shape: jBlock, 
+  shape: blockShapes[0], 
   position: [3,3],
   colour:'red',
 }
