@@ -87,6 +87,28 @@ function handleKeyboardEvent(event) {
   }
 }
 
+
+function isValidTilePosition(tilePosition) {
+  const row = tilePosition[0]
+  const column = tilePosition[1]
+  if (row < 0 || row >19){
+    return false
+  }
+  if (column<0 || column>9){
+    return false
+  }
+  return true 
+}
+console.log(isValidTilePosition([2,4]))
+
+
+function positionOneDown(position) {
+  return [position[0]+1 , position[1]]
+}
+console.log(positionOneDown([3,5]))
+
+
+
 function rotateBlockShapeClockwise(blockShape) {
   return blockShape[0].map((_, columnIndex) => 
       blockShape.map(row => row[columnIndex]).reverse()
