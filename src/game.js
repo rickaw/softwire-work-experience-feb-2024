@@ -17,8 +17,13 @@ const currentBlock = {
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
 setInterval(() => {
-  moveCurrentBlockDown()
-}, 1000);
+  const nextBlockPosition = positionOneDown(currentBlock.position)
+  const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
+  const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
+  if (tilePositionsAreValid) {
+    moveCurrentBlockDown()
+}
+}, 500);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
@@ -108,9 +113,30 @@ function positionOneDown(position) {
 console.log(positionOneDown([3,5]))
 
 
-
 function rotateBlockShapeClockwise(blockShape) {
   return blockShape[0].map((_, columnIndex) => 
       blockShape.map(row => row[columnIndex]).reverse()
   )
+}
+
+
+
+function getTilePositions(blockType, position){
+  const tilePos=[]
+  blockType.forEach(function (row,rowIndex){
+    row.forEach(function(item,index){
+      if (item==1){
+        tilePos.push([position[0] + rowIndex , position[1] + index])
+      }
+    })
+  })
+  return tilePos
+}
+//console.log(getTilePositions(jBlock,[1,2]))
+
+const nextBlockPosition = positionOneDown(currentBlock.position)
+const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
+const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
+if (tilePositionsAreValid) {
+  // move the block down (wipe, update & draw)
 }
