@@ -20,8 +20,8 @@ const currentBlock = {
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
 setInterval(() => {
-  moveCurrentBlockDown()
-}, 1000);
+    moveCurrentBlockDown()
+  }, 1000);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
@@ -36,9 +36,8 @@ function drawGameBoardGrid() {
     ctx.stroke();
   }
 }
-
 function drawGridForNextBlock() {
-  nextCtx.strokeStyle='rgba(0,0,0,0.3)'
+  ctx.strokeStyle='rgba(0,0,0,2)'
 
   for(let i= 40; i<160; i+=40) {
     nextCtx.moveTo(i,0);
@@ -68,27 +67,58 @@ function drawBlock(blockType, position, colour){
   })
 }
 
+const downMove = [1, 0]
+const leftMove=[0,-1]
+// move is [..., ...]
+const rightMove=[0,1]
+function moveCurrentBlock(move) {
+    const rowChange = move[0]
+    const columnChange = move[1]
+
+    drawBlock(currentBlock.shape, currentBlock.position, 'white')
+    currentBlock.position = [currentBlock.position[0] + rowChange, currentBlock.position[1] + columnChange]
+    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
+}
+
 function moveCurrentBlockDown() {
   drawBlock(currentBlock.shape, currentBlock.position, 'white')
   currentBlock.position = [currentBlock.position[0]+1, currentBlock.position[1]]
   drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 }
+function moveCurrentBlockLeft() {
+    drawBlock(currentBlock.shape, currentBlock.position, 'white')
+    currentBlock.position = [currentBlock.position[0], currentBlock.position[1]-1]
+    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
+  }
+function moveCurrentBlockRight() {
+    drawBlock(currentBlock.shape, currentBlock.position, 'white')
+    currentBlock.position = [currentBlock.position[0], currentBlock.position[1]+1]
+    drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
+  }
 
 function handleKeyboardEvent(event) {
   if (event.key === "ArrowUp") {
     event.preventDefault()
     console.log("Up arrow pressed")
+
   } else if(event.key === "ArrowDown"){
     event.preventDefault()
     console.log("Down arrow pressed")
+    // moveCurrentBlockDown()
+    moveCurrentBlock(downMove)
   } else if(event.key === "ArrowLeft"){
     event.preventDefault()
+    // moveCurrentBlockLeft()
+    moveCurrentBlock(leftMove)
     console.log("Left arrow pressed")
+
+    
   } else if(event.key === "ArrowRight"){
     event.preventDefault()
     console.log("Right arrow pressed")
-  }
-}
+    moveCurrentBlock(rightMove)
+
+}}
 
 function rotateBlockShapeClockwise(blockShape) {
   return blockShape[0].map((_, columnIndex) => 
