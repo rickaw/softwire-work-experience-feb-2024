@@ -1,4 +1,6 @@
 import { blockShapes } from "./blocks.js";
+import { chooseRandomItem } from "./chooseRandomItem.js";
+import { colors } from "./colors.js";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -20,8 +22,23 @@ const currentBlock = {
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
 setInterval(() => {
-  moveCurrentBlockIfValid(downMove)
-}, 500);
+  const nextBlockPosition = getPosition(currentBlock.position, downMove)
+  const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
+  const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
+  if (tilePositionsAreValid) {
+    moveCurrentBlock(downMove)
+  }
+  else{
+    currentBlock.shape= chooseRandomItem(blockShapes)
+    currentBlock.position= [0,2]
+    currentBlock.colour = chooseRandomItem(colors)
+
+
+
+
+  }
+}
+, 500);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
