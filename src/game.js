@@ -86,3 +86,9 @@ function handleKeyboardEvent(event) {
     console.log("Right arrow pressed")
   }
 }
+
+function rotateBlockShapeClockwise(blockShape) {
+  return blockShape[0].map((_, columnIndex) => 
+      blockShape.map(row => row[columnIndex]).reverse()
+  )
+}
