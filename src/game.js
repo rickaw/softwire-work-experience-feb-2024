@@ -32,10 +32,6 @@ setInterval(() => {
     currentBlock.shape= chooseRandomItem(blockShapes)
     currentBlock.position= [0,2]
     currentBlock.colour = chooseRandomItem(colors)
-
-
-
-
   }
 }
 , 500);
@@ -97,38 +93,18 @@ function moveCurrentBlock(move) {
     drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 }
 
-function moveCurrentBlockDown() {
-  drawBlock(currentBlock.shape, currentBlock.position, 'white')
-  currentBlock.position = [currentBlock.position[0]+1, currentBlock.position[1]]
-  drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
-}
-
 function handleKeyboardEvent(event) {
   if (event.key === "ArrowUp") {
     event.preventDefault()
-    console.log("Up arrow pressed")
-
   } else if(event.key === "ArrowDown"){
     event.preventDefault()
-    console.log("Down arrow pressed")
-    // moveCurrentBlockDown()
-
     moveCurrentBlockIfValid(downMove)
-
   } else if(event.key === "ArrowLeft"){
     event.preventDefault()
-
     moveCurrentBlockIfValid(leftMove)
-
-    console.log("Left arrow pressed")
-
-    
   } else if(event.key === "ArrowRight"){
     event.preventDefault()
-    console.log("Right arrow pressed")
-
     moveCurrentBlockIfValid(rightMove)
-
 }}
 
 function moveCurrentBlockIfValid(move) {
