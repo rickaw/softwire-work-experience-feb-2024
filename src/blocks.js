@@ -1,11 +1,11 @@
-export const jBlock = [
+const jBlock = [
     [0, 0, 1, 0],
     [0, 0, 1, 0],
     [0, 1, 1, 0],
     [0, 0, 0, 0]
 ]
 
-export const iBlock = [
+const iBlock = [
     [0, 0, 1, 0],
     [0, 0, 1, 0],
     [0, 0, 1, 0],
@@ -13,37 +13,39 @@ export const iBlock = [
 ]
 
 
-export const lPiece = [
+const lBlock = [
     [0, 1, 0, 0],
     [0, 1, 0, 0],
     [0, 1, 1, 0],
     [0, 0, 0, 0]
 ]
 
-export const oPiece = [
+const oBlock = [
     [0, 0, 0, 0],
     [0, 1, 1, 0],
     [0, 1, 1, 0],
     [0, 0, 0, 0]
 ]
 
-export const zPiece = [
+const zBlock = [
     [0, 0, 0, 0],
     [1, 1, 0, 0],
     [0, 1, 1, 0],
     [0, 0, 0, 0]
 ]
 
-export const tPiece = [
+const tBlock = [
     [0, 0, 0, 0],
     [1, 1, 1, 0],
     [0, 1, 0, 0],
     [0, 0, 0, 0]
 ]
 
-export const sPiece = [
+const sBlock = [
     [0, 0, 0, 0],
     [0, 0, 1, 1],
     [0, 1, 1, 0],
     [0, 0, 0, 0]
 ]
+
+export const blockShapes = [jBlock, iBlock, lBlock, oBlock, zBlock, tBlock, sBlock]
