@@ -20,8 +20,13 @@ const currentBlock = {
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
 setInterval(() => {
+  const nextBlockPosition = positionOneDown(currentBlock.position)
+  const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
+  const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
+  if (tilePositionsAreValid) {
     moveCurrentBlockDown()
-  }, 1000);
+  }
+}, 500);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
@@ -120,8 +125,33 @@ function handleKeyboardEvent(event) {
 
 }}
 
-function rotateBlockShapeClockwise(blockShape) {
-  return blockShape[0].map((_, columnIndex) => 
-      blockShape.map(row => row[columnIndex]).reverse()
-  )
+
+function isValidTilePosition(tilePosition) {
+  const row = tilePosition[0]
+  const column = tilePosition[1]
+  if (row < 0 || row >19){
+    return false
+  }
+  if (column<0 || column>9){
+    return false
+  }
+  return true 
+}
+
+
+function positionOneDown(position) {
+  return [position[0]+1 , position[1]]
+}
+
+
+function getTilePositions(blockType, position){
+  const tilePos=[]
+  blockType.forEach(function (row,rowIndex){
+    row.forEach(function(item,index){
+      if (item==1){
+        tilePos.push([position[0] + rowIndex , position[1] + index])
+      }
+    })
+  })
+  return tilePos
 }
