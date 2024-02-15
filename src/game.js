@@ -104,13 +104,11 @@ function isValidTilePosition(tilePosition) {
   }
   return true 
 }
-console.log(isValidTilePosition([2,4]))
 
 
 function positionOneDown(position) {
   return [position[0]+1 , position[1]]
 }
-console.log(positionOneDown([3,5]))
 
 
 function getTilePositions(blockType, position){
@@ -123,12 +121,4 @@ function getTilePositions(blockType, position){
     })
   })
   return tilePos
-}
-//console.log(getTilePositions(jBlock,[1,2]))
-
-const nextBlockPosition = positionOneDown(currentBlock.position)
-const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
-const tilePositionsAreValid = nextTilePositions.every(isValidTilePosition)
-if (tilePositionsAreValid) {
-  // move the block down (wipe, update & draw)
 }
