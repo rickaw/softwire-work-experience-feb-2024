@@ -146,6 +146,8 @@ function getPosition(originalPosition, move) {
 // returns the positions of tiles occupied by the block, given a block shape and the block position
 // blockType is a 2-dimensional array (like jBlock)
 // block position could be something like [2, 5]
+// the return value looks something like [[4, 6], [4, 8], [5, 7], ...] 
+// (They tell you which positions would be occupied by the block, depending on its shape and position)
 function getTilePositions(blockType, position){
   const tilePos=[]
   blockType.forEach(function (row,rowIndex){
