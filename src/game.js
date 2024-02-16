@@ -109,6 +109,7 @@ function moveCurrentBlock(move) {
 function handleKeyboardEvent(event) {
   if (event.key === "ArrowUp") {
     event.preventDefault()
+    rotateBlockShapeClockwiseIfValid()
   } else if(event.key === "ArrowDown"){
     event.preventDefault()
     moveCurrentBlockIfValid(downMove)
@@ -176,6 +177,8 @@ function getTilePositions(blockType, position){
   return tilePos
 }
 
+
+
 // given a block shape (2-dimensional array), returns another 2-dimensional array that has been rotated 90 degrees clockwise
 function rotateBlockShapeClockwise(blockShape) {
   return blockShape[0].map((_, columnIndex) => 
@@ -183,4 +186,17 @@ function rotateBlockShapeClockwise(blockShape) {
   )
 }
 
+
+function rotateBlockShapeClockwiseIfValid(){
+
+ const rotatedShape= rotateBlockShapeClockwise(currentBlock.shape)
+ const rotatedShapePositions = getTilePositions(rotatedShape, currentBlock.position,)
+
+ const tilePositionsAreValid = rotatedShapePositions.every(isValidTilePosition)
+ if (tilePositionsAreValid) {
+  drawBlock(currentBlock.shape, currentBlock.position, 'white')
+  currentBlock.shape = rotatedShape
+  drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
+ }
+}
 
