@@ -8,6 +8,10 @@ const ctx = canvas.getContext("2d");
 const nextCanvas = document.getElementById("canvas2");
 const nextCtx = nextCanvas.getContext("2d");
 
+const downMove = [1, 0]
+const leftMove=[0,-1]
+const rightMove=[0,1]
+
 drawGameBoardGrid()
 drawGridForNextBlock()
 
@@ -33,8 +37,7 @@ setInterval(() => {
     currentBlock.position= [0,2]
     currentBlock.colour = chooseRandomItem(colors)
   }
-}
-, 500);
+}, 500);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
@@ -49,6 +52,7 @@ function drawGameBoardGrid() {
     ctx.stroke();
   }
 }
+
 function drawGridForNextBlock() {
   ctx.strokeStyle='rgba(0,0,0,2)'
 
@@ -80,10 +84,6 @@ function drawBlock(blockType, position, colour){
   })
 }
 
-const downMove = [1, 0]
-const leftMove=[0,-1]
-
-const rightMove=[0,1]
 function moveCurrentBlock(move) {
     const rowChange = move[0]
     const columnChange = move[1]
