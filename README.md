@@ -3,45 +3,47 @@
 ## Week Schedule
 We should also have ~0.5h break in the chillout every day - we can play pool, board games, or just chill out.
 
-| Day       | Time   | Activity                                                 |
-| --------- | ------ | -------------------------------------------------------- |
-| Monday    | 10:00  | Arrival / Tour                                           |
-|           | 10:30  | Work experience intro / Feature specification            |
-|           | 11:30  | Machine set up                                           |
-|           | 12:00  | Presentation: Git / HTML / CSS / JS intro                |
-|           | 12:30  | Lunch                                                    |
-|           | 13:30  | Coding                                                   |
-|           | 15:00  | Guest presentation: Career Switch (Kiran Randhawa Kukar) |
-|           | 16:00  | Home time                                                |
-| Tuesday   | 10:00  | Standup                                                  |
-|           | 10:30  | Discussion: Git / HTML / CSS / JS Questions from Monday  |
-|           | 11:00  | Coding                                                   |
-|           | 12:30  | Lunch                                                    |
-|           | 13:30  | Coding                                                   |
-|           | 15:00  | Guest presentation: LNER Security (Sarah Binney)         |
-|           | 16:00  | Home time                                                |
-| Wednesday | 10:00  | Standup                                                  |
-|           | 10:30  | Presentation: DevOps: How is our Tetris site hosted?     |
-|           | 11:00  | Coding                                                   |
-|           | 11:00  | Guest presentation: Accessibility (Aya Stead)            |
-|           | 12:30  | Lunch                                                    |
-|           | 13:30  | Coding                                                   |
-|           | 16:00  | Home time                                                |
-| Thursday  | 10:00  | Standup                                                  |
-|           | 10:30  | Presentation: HTTP Requests and Backend Development      |
-|           | 11:00  | Coding                                                   |
-|           | 12:30  | Lunch                                                    |
-|           | 13:30  | Coding                                                   |
-|           | 15:00  | Guest presentation: Recruitment (Frances Portaluri)      |
-|           | 16:00  | Home time                                                |
-| Friday    | 10:00  | Standup                                                  |
-|           | 10:30  | Coding                                                   |
-|           | 12:00  | Presentation prep                                        |
-|           | 12:30  | Lunch                                                    |
-|           | 13:30  | Presentation prep                                        |
-|           | 14:30? | Presentation                                             |
-|           | 15:00  | Retro                                                    |
-|           | 16:00  | Home time |
+| Day       | Time  | Activity                                                 |
+| --------- | ----- | -------------------------------------------------------- |
+| Monday    | 10:00 | Arrival / Tour                                           |
+|           | 10:30 | Work experience intro / Feature specification            |
+|           | 11:30 | Machine set up                                           |
+|           | 12:00 | Presentation: Git / HTML / CSS / JS intro                |
+|           | 12:30 | Lunch                                                    |
+|           | 13:30 | Coding                                                   |
+|           | 15:00 | Guest presentation: Career Switch (Kiran Randhawa Kukar) |
+|           | 16:00 | Home time                                                |
+| Tuesday   | 10:00 | Standup                                                  |
+|           | 10:30 | Discussion: Git / HTML / CSS / JS Questions from Monday  |
+|           | 11:00 | Coding                                                   |
+|           | 12:30 | Lunch                                                    |
+|           | 13:30 | Coding                                                   |
+|           | 15:00 | Guest presentation: LNER Security (Sarah Binney)         |
+|           | 16:00 | Home time                                                |
+| Wednesday | 10:00 | Standup                                                  |
+|           | 10:30 | Presentation: DevOps: How is our Tetris site hosted?     |
+|           | 11:00 | Coding                                                   |
+|           | 11:00 | Guest presentation: Accessibility (Aya Stead)            |
+|           | 12:30 | Lunch                                                    |
+|           | 13:30 | Coding                                                   |
+|           | 16:00 | Home time                                                |
+| Thursday  | 10:00 | Standup                                                  |
+|           | 10:30 | Presentation: HTTP Requests and Backend Development      |
+|           | 11:00 | Coding                                                   |
+|           | 12:30 | Lunch                                                    |
+|           | 13:30 | Coding                                                   |
+|           | 15:00 | Guest presentation: Recruitment (Frances Portaluri)      |
+|           | 16:00 | Home time                                                |
+| Friday    | 10:00 | Standup                                                  |
+|           | 10:30 | Coding                                                   |
+|           | 12:00 | Presentation prep                                        |
+|           | 12:30 | Lunch                                                    |
+|           | 13:30 | Presentation prep                                        |
+|           | 14:00 | Retro                                                    |
+|           | 14:30 | Presentation prep                                        |
+|           | 15:00 | Presentation                                             |
+|           | 15:30 | Play games etc.                                          |
+|           | 16:00 | Home time                                                |
 
 ## Set up
 ### Download and install required software
