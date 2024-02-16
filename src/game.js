@@ -25,6 +25,8 @@ const currentBlock = {
 
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 
+const occupiedTilePositionsAndColors = []
+
 setInterval(() => {
   const nextBlockPosition = getPosition(currentBlock.position, downMove)
   const nextTilePositions = getTilePositions(currentBlock.shape, nextBlockPosition)
@@ -33,11 +35,19 @@ setInterval(() => {
     moveCurrentBlock(downMove)
   }
   else{
+    const tilePositions = getTilePositions(currentBlock.shape, currentBlock.position)
+    tilePositions.forEach(tilePosition => {
+      occupiedTilePositionsAndColors.push({
+        position: tilePosition,
+        color: currentBlock.colour
+      })
+    })
     currentBlock.shape= chooseRandomItem(blockShapes)
     currentBlock.position= [0,2]
     currentBlock.colour = chooseRandomItem(colors)
   }
-}, 500);
+}
+, 500);
 
 function drawGameBoardGrid() {
   for(let i = 40; i<400; i+=40) {
@@ -124,6 +134,12 @@ function moveCurrentBlockIfValid(move) {
 // returns true if the given tile position (2-dimensional array) is within the game board
 // returns false otherwise
 function isValidTilePosition(tilePosition) {
+  for (const occupiedTilePositionAndColor of occupiedTilePositionsAndColors) {
+    const occupiedPosition = occupiedTilePositionAndColor.position
+    if (occupiedPosition[0] === tilePosition[0] && occupiedPosition[1] === tilePosition[1]) {
+      return false
+    }
+  }
   const row = tilePosition[0]
   const column = tilePosition[1]
   if (row < 0 || row >19){
@@ -170,6 +186,7 @@ function rotateBlockShapeClockwise(blockShape) {
   )
 }
 
+
 function rotateBlockShapeClockwiseIfValid(){
 
  const rotatedShape= rotateBlockShapeClockwise(currentBlock.shape)
@@ -182,3 +199,4 @@ function rotateBlockShapeClockwiseIfValid(){
   drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
  }
 }
+
