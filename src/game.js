@@ -64,7 +64,7 @@ function drawGameBoardGrid() {
 }
 
 function drawGridForNextBlock() {
-  ctx.strokeStyle='rgba(0,0,0,2)'
+  ctx.strokeStyle='rgba(0,0,0,1)'
 
   for(let i= 40; i<160; i+=40) {
     nextCtx.moveTo(i,0);
@@ -101,7 +101,7 @@ function moveCurrentBlock(move) {
     const rowChange = move[0]
     const columnChange = move[1]
 
-    drawBlock(currentBlock.shape, currentBlock.position, 'white')
+    drawBlock(currentBlock.shape, currentBlock.position, ' rgb(229, 185, 229)')
     currentBlock.position = [currentBlock.position[0] + rowChange, currentBlock.position[1] + columnChange]
     drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
 }
@@ -194,7 +194,7 @@ function rotateBlockShapeClockwiseIfValid(){
 
  const tilePositionsAreValid = rotatedShapePositions.every(isValidTilePosition)
  if (tilePositionsAreValid) {
-  drawBlock(currentBlock.shape, currentBlock.position, 'white')
+  drawBlock(currentBlock.shape, currentBlock.position, ' rgb(229, 185, 229)')
   currentBlock.shape = rotatedShape
   drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
  }
