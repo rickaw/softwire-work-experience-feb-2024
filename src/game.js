@@ -18,9 +18,9 @@ drawGridForNextBlock()
 window.addEventListener("keydown", handleKeyboardEvent)
 
 const currentBlock = {
-  shape: blockShapes[0], 
-  position: [3,3],
-  colour:'red',
+  shape: chooseRandomItem(blockShapes), 
+  position: [-3,3],
+  colour:chooseRandomItem(colors),
 }
 
 drawBlock(currentBlock.shape, currentBlock.position, currentBlock.colour)
@@ -43,7 +43,7 @@ setInterval(() => {
       })
     })
     currentBlock.shape= chooseRandomItem(blockShapes)
-    currentBlock.position= [0,2]
+    currentBlock.position= [-3,3]
     currentBlock.colour = chooseRandomItem(colors)
   }
 }
@@ -142,7 +142,7 @@ function isValidTilePosition(tilePosition) {
   }
   const row = tilePosition[0]
   const column = tilePosition[1]
-  if (row < 0 || row >19){
+  if (row < -3 || row >19){
     return false
   }
   if (column<0 || column>9){
